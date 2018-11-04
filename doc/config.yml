@@ -1,0 +1,20 @@
+Content:
+    canary:
+        root_dir: doc/content
+    moose:
+        root_dir: ${MOOSE_DIR}/framework/doc/content
+        content:
+            - contrib/**
+            - css/**
+            - js/**
+
+Renderer:
+    type: MooseDocs.base.MaterializeRenderer
+    name: canary
+
+Extensions:
+    appsyntax:
+        type: MooseDocs.extensions.appsyntax
+        executable: ${ROOT_DIR}
+        includes:
+            - include
