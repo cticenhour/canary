@@ -8,33 +8,33 @@
 []
 
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [Kernels]
-  [./diff]
+  [diff]
     type = ExampleDiff
     variable = u
-  [../]
-  [./reaction]
+  []
+  [reaction]
     type = Reaction
     variable = u
-  [../]
+  []
 []
 
 [BCs]
-  [./neumann]
+  [neumann]
     type = FunctionNeumannBC
     variable = u
     function = 0.2
     boundary = 'left right top bottom'
-  [../]
+  []
 []
 
 [Executioner]
   type = Steady
-  solve_type = PJFNK
+  solve_type = 'PJFNK'
   petsc_options_iname = '-pc_type -pc_hypre_type'
   petsc_options_value = 'hypre boomeramg'
 []
