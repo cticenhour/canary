@@ -1,13 +1,10 @@
-//* This file is part of the MOOSE framework
-//* https://www.mooseframework.org
-//*
-//* All rights reserved, see COPYRIGHT for full restrictions
-//* https://github.com/idaholab/moose/blob/master/COPYRIGHT
+//* This file is part of the Canary application, which is based on MOOSE
+//* https://www.mooseframework.inl.gov
 //*
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
-#include "canaryApp.h"
+#include "CanaryApp.h"
 #include "gtest/gtest.h"
 
 // Moose includes
@@ -27,7 +24,7 @@ main(int argc, char ** argv)
   testing::InitGoogleTest(&argc, argv);
 
   MooseInit init(argc, argv);
-  registerApp(canaryApp);
+  registerApp(CanaryApp);
   Moose::_throw_on_error = true;
 
   return RUN_ALL_TESTS();

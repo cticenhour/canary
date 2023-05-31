@@ -1,13 +1,10 @@
-//* This file is part of the MOOSE framework
-//* https://www.mooseframework.org
-//*
-//* All rights reserved, see COPYRIGHT for full restrictions
-//* https://github.com/idaholab/moose/blob/master/COPYRIGHT
+//* This file is part of the Canary application, which is based on MOOSE
+//* https://www.mooseframework.inl.gov
 //*
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
-#include "canaryTestApp.h"
-#include "canaryApp.h"
+#include "CanaryTestApp.h"
+#include "CanaryApp.h"
 #include "Moose.h"
 #include "AppFactory.h"
 #include "MooseSyntax.h"
@@ -15,36 +12,36 @@
 
 template <>
 InputParameters
-validParams<canaryTestApp>()
+validParams<CanaryTestApp>()
 {
-  InputParameters params = validParams<canaryApp>();
+  InputParameters params = validParams<CanaryApp>();
   return params;
 }
 
-canaryTestApp::canaryTestApp(InputParameters parameters) : MooseApp(parameters)
+CanaryTestApp::CanaryTestApp(InputParameters parameters) : MooseApp(parameters)
 {
-  canaryTestApp::registerAll(
+  CanaryTestApp::registerAll(
       _factory, _action_factory, _syntax, getParam<bool>("allow_test_objects"));
 }
 
-canaryTestApp::~canaryTestApp() {}
+CanaryTestApp::~CanaryTestApp() {}
 
 void
-canaryTestApp::registerAll(Factory & f, ActionFactory & af, Syntax & s, bool use_test_objs)
+CanaryTestApp::registerAll(Factory & f, ActionFactory & af, Syntax & s, bool use_test_objs)
 {
-  canaryApp::registerAll(f, af, s);
+  CanaryApp::registerAll(f, af, s);
   if (use_test_objs)
   {
-    Registry::registerObjectsTo(f, {"canaryTestApp"});
-    Registry::registerActionsTo(af, {"canaryTestApp"});
+    Registry::registerObjectsTo(f, {"CanaryTestApp"});
+    Registry::registerActionsTo(af, {"CanaryTestApp"});
   }
 }
 
 void
-canaryTestApp::registerApps()
+CanaryTestApp::registerApps()
 {
-  registerApp(canaryApp);
-  registerApp(canaryTestApp);
+  registerApp(CanaryApp);
+  registerApp(CanaryTestApp);
 }
 
 /***************************************************************************************************
@@ -52,12 +49,12 @@ canaryTestApp::registerApps()
  **************************************************************************************************/
 // External entry point for dynamic application loading
 extern "C" void
-canaryTestApp__registerAll(Factory & f, ActionFactory & af, Syntax & s)
+CanaryTestApp__registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
-  canaryTestApp::registerAll(f, af, s);
+  CanaryTestApp::registerAll(f, af, s);
 }
 extern "C" void
-canaryTestApp__registerApps()
+CanaryTestApp__registerApps()
 {
-  canaryTestApp::registerApps();
+  CanaryTestApp::registerApps();
 }

@@ -1,1 +1,1 @@
-# canaryApp
+# CanaryApp
