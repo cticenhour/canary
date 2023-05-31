@@ -4,8 +4,7 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
-#ifndef EXAMPLEDIFF_H
-#define EXAMPLEDIFF_H
+#pragma once
 
 #include "Diffusion.h"
 
@@ -26,5 +25,3 @@ protected:
   virtual Real computeQpResidual() override;
   virtual Real computeQpJacobian() override;
 };
-
-#endif // EXAMPLEDIFF_H
