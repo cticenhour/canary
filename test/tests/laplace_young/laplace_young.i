@@ -25,10 +25,10 @@
 
 [BCs]
   [neumann]
-    type = FunctionNeumannBC
+    type = NeumannBC
     variable = u
-    function = 0.2
     boundary = 'left right top bottom'
+    value = 0.2
   []
 []
 
