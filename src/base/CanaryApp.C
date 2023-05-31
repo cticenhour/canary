@@ -14,6 +14,7 @@ InputParameters
 CanaryApp::validParams()
 {
   InputParameters params = MooseApp::validParams();
+  params.set<bool>("use_legacy_material_output") = false;
   return params;
 }
 
@@ -27,7 +28,7 @@ CanaryApp::~CanaryApp() {}
 void
 CanaryApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
-  ModulesApp::registerAll(f, af, s);
+  ModulesApp::registerAllObjects<CanaryApp>(f, af, s);
   Registry::registerObjectsTo(f, {"CanaryApp"});
   Registry::registerActionsTo(af, {"CanaryApp"});
 
