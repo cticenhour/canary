@@ -8,16 +8,13 @@
 
 #include "MooseApp.h"
 
-class CanaryApp;
-
-template <>
-InputParameters validParams<CanaryApp>();
-
 class CanaryApp : public MooseApp
 {
 public:
   CanaryApp(InputParameters parameters);
   virtual ~CanaryApp();
+
+  static InputParameters validParams();
 
   static void registerApps();
   static void registerAll(Factory & f, ActionFactory & af, Syntax & s);

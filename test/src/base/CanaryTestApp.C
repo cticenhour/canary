@@ -10,11 +10,10 @@
 #include "MooseSyntax.h"
 #include "ModulesApp.h"
 
-template <>
 InputParameters
-validParams<CanaryTestApp>()
+CanaryTestApp::validParams()
 {
-  InputParameters params = validParams<CanaryApp>();
+  InputParameters params = CanaryApp::validParams();
   return params;
 }
 

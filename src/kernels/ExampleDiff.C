@@ -8,11 +8,10 @@
 
 registerMooseObject("CanaryApp", ExampleDiff);
 
-template <>
 InputParameters
-validParams<ExampleDiff>()
+ExampleDiff::validParams()
 {
-  InputParameters params = validParams<Diffusion>();
+  InputParameters params = Diffusion::validParams();
   params.addClassDescription("");
   return params;
 }

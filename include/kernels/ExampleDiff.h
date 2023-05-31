@@ -8,11 +8,6 @@
 
 #include "Diffusion.h"
 
-class ExampleDiff;
-
-template<>
-InputParameters validParams<ExampleDiff>();
-
 /**
  *
  */
@@ -20,6 +15,8 @@ class ExampleDiff : public Diffusion
 {
 public:
   ExampleDiff(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual() override;

@@ -8,16 +8,13 @@
 
 #include "MooseApp.h"
 
-class CanaryTestApp;
-
-template <>
-InputParameters validParams<CanaryTestApp>();
-
 class CanaryTestApp : public MooseApp
 {
 public:
   CanaryTestApp(InputParameters parameters);
   virtual ~CanaryTestApp();
+
+  static InputParameters validParams();
 
   static void registerApps();
   static void registerAll(Factory & f, ActionFactory & af, Syntax & s, bool use_test_objs = false);
