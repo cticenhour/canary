@@ -11,10 +11,10 @@
 /**
  *
  */
-class ExampleDiff : public Diffusion
+class LaplaceYoungDiffusion : public Diffusion
 {
 public:
-  ExampleDiff(const InputParameters & parameters);
+  LaplaceYoungDiffusion(const InputParameters & parameters);
 
   static InputParameters validParams();
 

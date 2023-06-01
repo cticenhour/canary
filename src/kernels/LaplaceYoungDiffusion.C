@@ -4,22 +4,22 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
-#include "ExampleDiff.h"
+#include "LaplaceYoungDiffusion.h"
 
-registerMooseObject("CanaryApp", ExampleDiff);
+registerMooseObject("CanaryApp", LaplaceYoungDiffusion);
 
 InputParameters
-ExampleDiff::validParams()
+LaplaceYoungDiffusion::validParams()
 {
   InputParameters params = Diffusion::validParams();
   params.addClassDescription("");
   return params;
 }
 
-ExampleDiff::ExampleDiff(const InputParameters & parameters) : Diffusion(parameters) {}
+LaplaceYoungDiffusion::LaplaceYoungDiffusion(const InputParameters & parameters) : Diffusion(parameters) {}
 
 Real
-ExampleDiff::computeQpResidual()
+LaplaceYoungDiffusion::computeQpResidual()
 {
   return (1 / std::sqrt(1 + (_grad_u[_qp](0) * _grad_u[_qp](0) + _grad_u[_qp](1) * _grad_u[_qp](1) +
                              _grad_u[_qp](2) * _grad_u[_qp](2)))) *
@@ -27,7 +27,7 @@ ExampleDiff::computeQpResidual()
 }
 
 Real
-ExampleDiff::computeQpJacobian()
+LaplaceYoungDiffusion::computeQpJacobian()
 {
   return (1 / std::sqrt(1 + (_grad_u[_qp](0) * _grad_u[_qp](0) + _grad_u[_qp](1) * _grad_u[_qp](1) +
                              _grad_u[_qp](2) * _grad_u[_qp](2)))) *

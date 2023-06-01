@@ -14,7 +14,7 @@
 
 [Kernels]
   [diff]
-    type = ExampleDiff
+    type = LaplaceYoungDiffusion
     variable = u
   []
   [reaction]
