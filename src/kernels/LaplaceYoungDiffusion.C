@@ -21,15 +21,13 @@ LaplaceYoungDiffusion::LaplaceYoungDiffusion(const InputParameters & parameters)
 Real
 LaplaceYoungDiffusion::computeQpResidual()
 {
-  return (1 / std::sqrt(1 + (_grad_u[_qp](0) * _grad_u[_qp](0) + _grad_u[_qp](1) * _grad_u[_qp](1) +
-                             _grad_u[_qp](2) * _grad_u[_qp](2)))) *
+  return (1 / std::sqrt(1 + (_grad_u[_qp].norm() * _grad_u[_qp].norm()))) *
          Diffusion::computeQpResidual();
 }
 
 Real
 LaplaceYoungDiffusion::computeQpJacobian()
 {
-  return (1 / std::sqrt(1 + (_grad_u[_qp](0) * _grad_u[_qp](0) + _grad_u[_qp](1) * _grad_u[_qp](1) +
-                             _grad_u[_qp](2) * _grad_u[_qp](2)))) *
+  return (1 / std::sqrt(1 + (_grad_u[_qp].norm() * _grad_u[_qp].norm()))) *
          Diffusion::computeQpJacobian();
 }
