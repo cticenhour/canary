@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include "Diffusion.h"
+#include "ADDiffusion.h"
 
 /**
  *
  */
-class LaplaceYoungDiffusion : public Diffusion
+class LaplaceYoungDiffusion : public ADDiffusion
 {
 public:
   LaplaceYoungDiffusion(const InputParameters & parameters);
@@ -19,6 +19,5 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
+  virtual ADRealVectorValue precomputeQpResidual() override;
 };

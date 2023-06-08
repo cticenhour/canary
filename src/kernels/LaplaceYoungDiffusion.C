@@ -11,23 +11,20 @@ registerMooseObject("CanaryApp", LaplaceYoungDiffusion);
 InputParameters
 LaplaceYoungDiffusion::validParams()
 {
-  InputParameters params = Diffusion::validParams();
+  InputParameters params = ADDiffusion::validParams();
   params.addClassDescription("");
   return params;
 }
 
-LaplaceYoungDiffusion::LaplaceYoungDiffusion(const InputParameters & parameters) : Diffusion(parameters) {}
-
-Real
-LaplaceYoungDiffusion::computeQpResidual()
+LaplaceYoungDiffusion::LaplaceYoungDiffusion(const InputParameters & parameters)
+  : ADDiffusion(parameters)
 {
-  return (1 / std::sqrt(1 + (_grad_u[_qp].norm() * _grad_u[_qp].norm()))) *
-         Diffusion::computeQpResidual();
 }
 
-Real
-LaplaceYoungDiffusion::computeQpJacobian()
+ADRealVectorValue
+LaplaceYoungDiffusion::precomputeQpResidual()
 {
-  return (1 / std::sqrt(1 + (_grad_u[_qp].norm() * _grad_u[_qp].norm()))) *
-         Diffusion::computeQpJacobian();
+  return (1 / std::sqrt(1 + (_grad_u[_qp](0) * _grad_u[_qp](0) + _grad_u[_qp](1) * _grad_u[_qp](1) +
+                             _grad_u[_qp](2) * _grad_u[_qp](2)))) *
+         ADDiffusion::precomputeQpResidual();
 }
