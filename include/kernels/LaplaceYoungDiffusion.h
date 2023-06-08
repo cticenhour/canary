@@ -9,7 +9,7 @@
 #include "ADDiffusion.h"
 
 /**
- *
+ *  Custom diffusion kernel used for the Laplace Young example problem.
  */
 class LaplaceYoungDiffusion : public ADDiffusion
 {

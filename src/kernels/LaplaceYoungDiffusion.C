@@ -12,7 +12,7 @@ InputParameters
 LaplaceYoungDiffusion::validParams()
 {
   InputParameters params = ADDiffusion::validParams();
-  params.addClassDescription("");
+  params.addClassDescription("Custom diffusion kernel used for the Laplace Young example problem.");
   return params;
 }
 
