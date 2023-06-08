@@ -1,0 +1,1 @@
+../../laplace_young_custom_diffusion/gold/laplace_young_cd_out.e
